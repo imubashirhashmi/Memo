@@ -1,1 +1,266 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .main {
+    position: relative;
+    width: 400px;
+    height: 100%;
+    perspective: 1000px;
+    backface-visibility: hidden;
+}
+
+.container .clicked {
+    animation: main 1s forwards 1;
+}
+
+.container .againClicked {
+    animation: main1 1s forwards 1;
+}
+
+.container .clicked .login {
+    animation: log 1s forwards 1;
+}
+
+.container .againClicked .login {
+    animation: log1 1s forwards 1;
+}
+
+.container .clicked .register {
+    animation: reg 1s forwards 1;
+}
+
+.container .againClicked .register {
+    animation: reg1 1s forwards 1;
+}
+
+@keyframes main {
+    0%{perspective: 1000px!important;}
+    99%{perspective: 1000px!important;}
+    100%{perspective: 0px!important;}
+}
+
+@keyframes main1 {
+    0%{perspective: 0px!important;}
+    1%{perspective: 1000px!important;}
+    99%{perspective: 1000px!important;}
+    100%{perspective: 0px!important;}
+}
+
+@keyframes log {
+    0%{transform: translate3d(0,0,0) translateY(-50%) rotateY(0deg)}
+    100%{transform: translate3d(0,0,0) translateY(-50%) rotateY(180deg)}
+}
+
+@keyframes reg {
+    0%{transform: translate3d(0,0,0) translateY(-50%) rotateY(180deg)}
+    99%{transform: translate3d(0,0,0) translateY(-50%) rotateY(360deg)}
+    100%{transform: translate3d(0,0,0) translateY(-50%) rotateY(0deg)}   
+}
+
+@keyframes log1 {
+    0%{transform: translate3d(0,0,0) translateY(-50%) rotateY(180deg)}
+    100%{transform: translate3d(0,0,0) translateY(-50%) rotateY(0deg)}
+}
+
+@keyframes reg1 {
+    0%{transform: translate3d(0,0,0) translateY(-50%) rotateY(0deg)}
+    1%{transform: translate3d(0,0,0) translateY(-50%) rotateY(360deg)}
+    100%{transform: translate3d(0,0,0) translateY(-50%) rotateY(180deg)}   
+}
+
+                                                        /* LOGIN */
+
+.container .login {
+    position: absolute;
+    top:50%;
+    top:50%;
+    transform: translate3d(0,0,0) translateY(-50%);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    width: 400px;
+    height: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 120px 12px 40px 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* display: none; */
+}
+
+.container .login::before {
+    content: 'login';
+    width: 90%;
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(68, 68, 68);
+    padding-bottom: 20px;
+    margin-top:20px;
+    /* border-bottom: 1px solid rgba(131, 131, 131, 0.2); */
+    top:20px;
+}
+
+.container .login.error::after, .container .register.error::after {
+    content: attr(report);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    color: red;
+    font-size: small;
+    padding: 4px;
+    top:100px;
+}
+
+.container .login input {
+    width: 100%;
+    padding: 12px 12px;
+    margin: 8px 0;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    caret-color: #111;
+    box-shadow: 0 0 0px 1px rgba(165, 165, 165, 0.2);
+    cursor: url('../img/darkEdit.png'),auto;
+}
+
+.container .login input:focus {
+    box-shadow: 0 0 0px 1px rgba(165, 165, 165, 0.4);
+}
+
+.container .login button {
+    width: 100%;
+    font-weight: bold;
+    margin: 12px 0;
+    padding: 12px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.container .login button:hover {
+    background-color: #f5f5f5;
+}
+
+.container .login button:hover {
+    cursor: pointer;
+}
+
+.container .login .switch {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.container .login .switch a {
+    cursor: pointer;
+    color: blue;
+}
+
+                                                        /* LOGIN ENDS */
+
+                                                        /* REGISTER */
+
+.container .register {
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0,0,0) translateY(-50%) rotateY(180deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    width: 400px;
+    height: auto;
+    background-color: #fff;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 120px 12px 40px 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container .register::before {
+    content: 'register';
+    width: 90%;
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(68, 68, 68);
+    padding-bottom: 20px;
+    margin-top: 20px;
+    /* border-bottom: 1px solid rgba(131, 131, 131, 0.2); */
+    top:20px;
+}
+
+.container .register input {
+    width: 100%;
+    padding: 12px 12px;
+    margin: 4px 0;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    caret-color: #111;
+    box-shadow: 0 0 0px 1px rgba(165, 165, 165, 0.2);
+    cursor: url('../img/darkEdit.png'),auto;
+}
+
+.container .register input:focus {
+    box-shadow: 0 0 0px 1px rgba(165, 165, 165, 0.4);
+}
+
+.container .register .name input {
+    float: left;
+    width: 49%;
+}
+
+.container .register .name input:last-child {
+    float: right;
+}
+
+.container .register button {
+    width: 100%;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 12px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.container .register button:hover {
+    background-color: #f5f5f5;
+}
+
+.container .register button:hover {
+    cursor: pointer;
+}
+
+.container .register .switch {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.container .register .switch a {
+    cursor: pointer;
+    color: blue;
+}
