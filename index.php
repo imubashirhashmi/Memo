@@ -206,7 +206,7 @@
                 }
                 datum.append('password',password);
 
-                fetch('http://ta-qayamat/memo/api/login.php', 
+                fetch('http://localhost/memo/api/login.php', 
                 {method:'POST', body:datum}).then(x=>x.json()).then(y=>{
                     console.log(y);
                     if(y=="error")
@@ -231,7 +231,7 @@
                     {
                         //user logged in
                         l.classList.remove("error");
-                        window.location= "http://ta-qayamat/memo";
+                        window.location= "http://localhost/memo";
                     }
                 });
             }
@@ -280,7 +280,7 @@
                 datum.append('password2',password2);
 
 
-                fetch('http://ta-qayamat/memo/api/register.php', 
+                fetch('http://localhost/memo/api/register.php', 
                 {method:'POST', body:datum}).then(x=>x.json()).then(y=>{
                     console.log(y);
 
@@ -318,7 +318,7 @@
                     {
                         //user logged in
                         r.classList.remove("error");
-                        window.location= "http://ta-qayamat/memo";
+                        window.location= "http://localhost/memo";
                     }
                 });
             }
