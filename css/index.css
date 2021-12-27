@@ -1,0 +1,503 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    position: absolute;
+    display: none;
+    color: red;
+}
+
+.gotoTop {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    bottom: 20px;
+    background-color: burlywood;
+}
+
+.gotoTop:hover,
+.gotoTop:focus {
+    cursor: pointer;
+    background-color: rgb(236, 178, 102);
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(253, 253, 253);
+    overflow-x: hidden;
+}
+                                                    /* TOP BAR */
+
+.topbar {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    box-shadow: 0px 0px 1px 0.2px rgb(146, 146, 146);
+    z-index: 888;
+}
+
+.topbar .navMenu {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    width: 25px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+
+.topbar .navMenu .nav {
+    width: 25px;
+    height: 25px;
+    background-image: url('../img/navMenu.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.topbar .logo {
+    position: absolute;
+    display: inline;
+    font-size: xx-large;
+    color: red;
+    font-weight: bolder;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: logoAnimator 3s alternate infinite;
+}
+
+@keyframes logoAnimator {
+    0% {color: red;}
+    100% {color:blue}
+}
+
+.topbar .logo:hover {
+    cursor: pointer;
+}
+
+.topbar .search {
+    position: absolute;
+    display: flex;
+    width: 40vw;
+    height: 50px;
+    align-items: center;
+    padding: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #e6e6e6;
+    border-radius: 12px;
+}
+
+.topbar .search .img {
+    display: block;
+    background-image: url('../img/search.png');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.topbar .search .img:hover {
+    cursor: pointer;
+    background-color: #dbdbdb;
+}
+
+.topbar .search:focus-within {
+    background-color: #fff;
+}
+
+.topbar .search input {
+    width: 93%;
+    margin-left: 4px;
+    padding: 12px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.topbar .account {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    right: 20px!important;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #666666;
+}
+
+.topbar .account .menu {
+    position: absolute;
+    display: none;
+    width: 200px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 20px 0;
+    top: 55px;
+    right: 0px;
+    box-shadow: 0 0 0 0.3px #666, 0 0 5px 0px rgb(189, 189, 189);
+    z-index: 100000;
+}
+
+.topbar .account .menu.active{
+    opacity: 0;
+    display: block;
+    animation: popMenu 0.2s forwards 1;
+}
+
+@keyframes popMenu {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.topbar .account .menu li {
+    list-style: none;
+    padding: 8px 20px;
+}
+
+.topbar .account .menu li:hover {
+    background-color: #f2f2f2;
+}
+
+.topbar .settingsa:hover {
+    cursor: pointer;
+    background-color: #727272;
+}
+
+.topbar .settingsa::before {
+    content: '';
+    width: 150%;
+    height: 150%;
+    background-image: radial-gradient(circle at top, red, transparent),
+    radial-gradient(circle at bottom, blue, transparent);
+    /* background-image: radial-gradient(
+        red 180deg,
+        blue 360deg,
+        transparent 540deg
+    ); */
+    animation: rotate 2s linear infinite;
+}
+
+.topbar .settingsa::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+                                                        /* TOP BAR ENDS HERE */
+
+                                                        /* MAIN AREA */
+
+.container .main {
+    width: 100%;
+    padding: 20px 40px 20px 0px;
+    margin-top: 100px;
+    display: flex;
+}
+
+.container .main .navigation {
+    position: fixed;
+    top: 70px;
+    width: 50px;
+    height: 500px;
+    background-color: #f2f2f2;
+    border-bottom-right-radius: 20px;
+}
+
+
+.container .main .memos {
+    width: 100%;
+    margin-left: 70px;
+    padding: 0 20px;
+    font-family: cursive;
+    font-size: smaller;
+}
+
+.container .main .memos .add {
+    position: relative;
+    left: 50%;
+    padding: 0px;
+    transform: translateX(-50%);
+    width: 50%;
+    min-height: 40px;
+    max-height: 400px;
+    max-width: 500px;
+    overflow-y: hidden;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0px 0px 0px 0.5px rgb(146, 146, 146);
+}
+
+.container .main .memos .add {
+    width: 100%;
+}
+
+.container .main .memos .add:focus-within {
+    background-color: #ffff;
+}
+
+.container .main .memos .add input {
+    width: 100%;
+    height: 40px;
+    padding: 12px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.container .main .memos .add .textarea {
+    display: none;
+    overflow-y: scroll;
+    min-height: 100px;
+    max-height: 300px;
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.textarea:empty:before {
+    content: attr(placeholder);
+    color: #555;
+}
+
+.container .main .memos .expand {
+    animation: animExpand 0.8s backwards 0s 1;
+}
+
+.container .main .memos .contract {
+    animation: animContract 0.3s forwards 0s 1;
+}
+
+@keyframes animExpand {
+    0% {min-height: 40px;max-height: 40px;}
+    100% {min-height: 200px;max-height: 200px;}
+}
+
+@keyframes animContract {
+    0% {min-height: 200px;}
+    100% {min-height: 40px;}
+}
+
+.container .main .memos .cardArea {
+    display: grid;
+    margin-top: 60px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 1.5em;
+    column-gap: 1.5em;
+    width: 100%;
+}
+
+.container .main .memos .cardArea .card {
+    position: relative;
+    word-wrap: break-word;
+    width: 100%;
+    max-height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0px 0px 0px 0.5px rgb(146, 146, 146);
+}
+
+.container .main .memos .cardArea .card:hover {
+    box-shadow: 0px 0px 4px 1px rgb(182, 182, 182);
+}
+
+.container .main .memos .cardArea .card .title, .DialogBox .title {
+    outline: none;
+    padding: 8px 2px;
+    font-weight: 600;
+    color: black;
+    /* border-bottom: 1px solid rgb(75, 75, 75); */
+}
+
+.add .addTitle, .add .addStory, .DialogBox .title, .DialogBox .story {
+    cursor: url('../img/darkEdit.png'), auto;
+}
+
+.container .main .memos .cardArea .card .story, .DialogBox .story {
+    outline: none;
+    width: 100%;
+    padding: 8px 2px;
+    color: black;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: justify;
+    text-justify: inter-word;
+    max-height: 200px;
+    margin-bottom: 50px;
+    white-space: pre-wrap;
+}
+
+.container .main .memos .cardArea .card .dots {
+    display: none;
+    position: absolute;
+    left: 50%;
+    font-weight: bold;
+    font-size: xx-large;
+    transform: translateX(-50%);
+    bottom: 40px;
+}
+
+.container .main .memos .cardArea .card p {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top:0;
+    left: 0;
+    display: none;
+}
+
+
+.DialogBox .story {
+    position: relative;
+    min-height: 50px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.form {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background-color: red;
+}
+
+.DialogBox .misc, .cardArea .card .misc, .add .misc {
+    position: absolute;
+    padding: 0 20px;
+    width: 100%;
+    height: 30px;
+    bottom: 12px;
+    left: 0;
+}
+
+.add .misc {
+    opacity: 0;
+    display: none;
+}
+
+.DialogBox .colors, .cardArea .card .misc .options {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+}
+
+.add .colors {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+}
+
+.add .misc.active {
+    opacity: 0;
+    animation: startColors 2s forwards 1;
+}
+
+@keyframes startColors {
+    0% {opacity: 0;}
+    30% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+.cardArea .card .misc .options {
+    display: none;
+    border-radius: 8px;
+}
+
+.cardArea .card .misc:hover .options {
+
+    display: block;
+    background-color: red;
+    animation: options 1s forwards 1;
+
+}
+
+@keyframes options {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.DialogBox .colors span, .add .colors span {
+    width: 15px;
+    height: 15px;
+    margin: 1px 3px;
+    box-shadow: 0 0 2px #555;
+}
+
+.DialogBox {
+    position: absolute;
+    display: none;
+    width: 50%;
+    padding: 30px 12px;
+    border-radius: 12px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px #999;
+    background-color: #fff;
+    z-index: 10000;
+}
+
+ .DialogBox .cancel {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0px;
+    right: 8px;
+    color: #666666;
+    outline: none;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    /* background-color: red; */
+}
+
+.DialogBox .cancel:hover,
+.DialogBox .cancel:focus  {
+    cursor: pointer;
+    color: #8a8a8a;
+}
+
+.blacked {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: #727272;
+    z-index: 999;
+}
+
